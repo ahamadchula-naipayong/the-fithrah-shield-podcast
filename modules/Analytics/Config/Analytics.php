@@ -1,0 +1,53 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\Analytics\Config;
+
+use CodeIgniter\Config\BaseConfig;
+
+class Analytics extends BaseConfig
+{
+    /**
+     * Gateway to analytic routes. By default, all analytics routes will be under `/analytics` path
+     */
+    public string $gateway = 'analytics';
+
+    /**
+     * --------------------------------------------------------------------
+     * Route filters options
+     * --------------------------------------------------------------------
+     * @var array<string, string>
+     */
+    public array $routeFilters = [
+        'analytics-full-data'     => 'permission:podcast#.view',
+        'analytics-data'          => 'permission:podcast#.view',
+        'analytics-filtered-data' => 'permission:podcast#.view',
+    ];
+
+    /**
+     * --------------------------------------------------------------------------
+     * Secret Salt
+     * --------------------------------------------------------------------------
+     *
+     * The secret salt is a string of random characters that is used when hashing data.
+     * Each Castopod instance has its own secret salt so keys will never be the same.
+     *
+     * Example:
+     *    Z&|qECKBrwgaaD>~;U/tXG1U%tSe_oi5Tzy)h>}5NC2npSrjvM0w_Q>cs=0o=H]*
+     */
+    public string $salt = '';
+
+    /**
+     * --------------------------------------------------------------------------
+     * The Open Podcast Prefix Project Config
+     * --------------------------------------------------------------------------
+     *
+     * @var array<string, string>
+     */
+    public array $OP3 = [
+        'host' => 'https://op3.dev/',
+    ];
+
+    public bool $enableOP3 = false;
+}

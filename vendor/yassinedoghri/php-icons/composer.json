@@ -1,0 +1,78 @@
+{
+  "name": "yassinedoghri/php-icons",
+  "description": "A PHP library based on iconify's API to download and render svg icons from popular open source icon sets.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Yassine Doghri",
+      "email": "yassine@doghri.fr",
+      "homepage": "https://yassinedoghri.com",
+      "role": "Maintainer"
+    }
+  ],
+  "bin": [
+    "bin/php-icons"
+  ],
+  "scripts": {
+    "dev": "php -S 0.0.0.0:8000",
+    "phpstan": "vendor/bin/phpstan analyse --ansi",
+    "rector": "vendor/bin/rector process --dry-run --ansi",
+    "rector:fix": "vendor/bin/rector process --ansi",
+    "style": "vendor/bin/ecs check --ansi",
+    "style:fix": "vendor/bin/ecs check --fix --ansi",
+    "pest": "./vendor/bin/pest --colors=always",
+    "pest:parallel": "./vendor/bin/pest --colors=always --parallel",
+    "pest:profiling": "./vendor/bin/pest --colors=always --profile",
+    "pest:coverage": "./vendor/bin/pest --colors=always --parallel --coverage",
+    "pest:type-coverage": "./vendor/bin/pest --colors=always --type-coverage --min=95",
+    "test": [
+      "@style",
+      "@phpstan",
+      "@rector",
+      "@pest:type-coverage",
+      "@pest:parallel"
+    ],
+    "core:update": [
+      "composer update --no-interaction --prefer-stable",
+      "composer bump --ansi",
+      "composer validate --strict --ansi",
+      "composer audit --ansi"
+    ]
+  },
+  "require": {
+    "php": ">=8.1",
+    "composer-runtime-api": "^2.2",
+    "adhocore/cli": "^v1.9.3"
+  },
+  "require-dev": {
+    "kint-php/kint": "^6.0.1",
+    "phpstan/phpstan": "^2.1.10",
+    "rector/rector": "^2.0.10",
+    "symplify/coding-standard": "^12.2.3",
+    "symplify/easy-coding-standard": "^12.5.9",
+    "pestphp/pest": "^3.7.4",
+    "pestphp/pest-plugin-type-coverage": "^3.4.0"
+  },
+  "autoload": {
+    "files": [
+      "src/functions.php",
+      "src/Console/helpers.php"
+    ],
+    "psr-4": {
+      "PHPIcons\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

@@ -1,0 +1,23 @@
+﻿# Environment & secrets
+.env
+.env.backup
+.env.production
+.env.testing
+
+# Castopod writable folder (cache, sessions, logs, temporary files)
+writable/*
+!writable/.gitkeep
+!writable/index.html
+
+# Media storage (audio, episode covers, banners)
+# Note: Keep placeholder files so git retains directory structure
+public/media/*
+!public/media/.gitkeep
+!public/media/index.html
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
